@@ -15,8 +15,13 @@ operations.forEach((op) => {
     const operation = op.textContent
     const a = parseInt(input1.value)
     const b = parseInt(input2.value)
-
-    if(isNaN(a) && isNaN(b)) result.textContent = "Error: Both inputs are invalid/empty, please enter a number"
+    console.log(operation)
+    if(operation === 'CLEAR') {
+      result.textContent = ''
+      input1Res.textContent = ''
+      input2Res.textContent = ''
+    }
+    else if(isNaN(a) && isNaN(b)) result.textContent = "Error: Both inputs are invalid/empty, please enter a number"
     else if(isNaN(a)) result.textContent = "Error: Input1 is empty, please enter a number"
     else if(isNaN(b)) result.textContent = "Error: Input2 is empty, please enter a number"
     else {
@@ -31,13 +36,8 @@ operations.forEach((op) => {
       else if(operation === '*') {
         result.textContent = `Input1 ${operation} Input2 = ${a} ${operation} ${b} = ${mul(a,b)}`
       }
-      else if(operation === '/') {
-        result.textContent = `Input1 ${operation} Input2 = ${a} ${operation} ${b} = ${isNaN(div(a,b)) ? Infinity : div(a,b)}`
-      }
       else {
-        input1Res.textContent = ''
-        input2Res.textContent = ''
-        result.textContent = ''
+        result.textContent = `Input1 ${operation} Input2 = ${a} ${operation} ${b} = ${isNaN(div(a,b)) ? Infinity : div(a,b)}`
       }
     }
   }
